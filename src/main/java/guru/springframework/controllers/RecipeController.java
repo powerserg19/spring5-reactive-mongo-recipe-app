@@ -84,7 +84,7 @@ public class RecipeController {
     }
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler({NotFoundException.class, TemplateInputException.class})
+    //@ExceptionHandler({NotFoundException.class, TemplateInputException.class})
     public String handleNotFound(Exception exception, Model model){
 
         log.error("Handling not found exception");
