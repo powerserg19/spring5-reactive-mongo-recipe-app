@@ -1,17 +1,12 @@
 package guru.springframework.controllers;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.web.reactive.error.AbstractErrorWebExceptionHandler;
-import org.springframework.boot.web.reactive.error.ErrorAttributes;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.support.WebExchangeBindException;
-import org.springframework.web.reactive.function.server.RouterFunction;
-import org.springframework.web.reactive.function.server.RouterFunctions;
-import org.springframework.web.reactive.function.server.ServerResponse;
 
 
 /**
@@ -19,18 +14,17 @@ import org.springframework.web.reactive.function.server.ServerResponse;
  */
 @Slf4j
 @ControllerAdvice
-public class ControllerExceptionHandler  {
+public class ControllerExceptionHandler {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(WebExchangeBindException.class)
     public String handleNumberFormat(Exception exception, Model model){
 
-        log.error("Handling Number Format Exception");
+        log.error("Handling Binding Exception");
         log.error(exception.getMessage());
-        model.addAttribute("exception", exception);
 
+        model.addAttribute("exception", exception);
 
         return "400error";
     }
-
 }
